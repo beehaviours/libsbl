@@ -13,7 +13,7 @@ int filter(const struct dirent *dir) {
 }
 
 
-int find_sblv_file(char *filename, int module, int cam, int year,
+int sbl_find_video(char *filename, int module, int cam, int year,
 		   int month, int day, int hour, int minute) {
 	struct dirent **namelist;
 	int n;
@@ -46,4 +46,10 @@ int find_sblv_file(char *filename, int module, int cam, int year,
 	free(namelist);
 
 	return 1;
+}
+
+void sbl_get_lib_version( int* major, int* minor, int* patch) {
+	*major = VERSION_MAJOR ;
+	*minor = VERSION_MINOR ;
+	*patch = VERSION_PATCH ;
 }

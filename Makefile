@@ -3,7 +3,10 @@ VERSION_MINOR = 1
 VERSION_PATCH = 0
 
 CC = gcc
-CFLAGS = -Wall -Iinclude -c -fPIC
+CFLAGS = -Wall -Iinclude -c -fPIC \
+		 -DVERSION_MAJOR=$(VERSION_MAJOR) \
+		 -DVERSION_MINOR=$(VERSION_MINOR) \
+		 -DVERSION_PATCH=$(VERSION_PATCH)
 LDFLAGS = -shared
 
 PREFIX ?= /usr/local

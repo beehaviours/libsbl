@@ -7,7 +7,10 @@
 #define SBL_WEBSERVER_PATH 	"/web_server"
 #define SBL_VIDEO_PATH		"/videos"
 
-int find_sblv_file(char *filename, int module, int cam, int year, int month, int day, int hour, int minute) ;
+
+void sbl_get_lib_version( int* major, int* minor, int* patch);
+
+int sbl_find_sblv_video(char *filename, int module, int cam, int year, int month, int day, int hour, int minute) ;
 
 #endif
 
