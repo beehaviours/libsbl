@@ -1,0 +1,10 @@
+prefix=@PREFIX@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${exec_prefix}/include
+ 
+Name: libsbl
+Description: Helper library for the hive project
+Version: @MAJOR@.@MINOR@.@PATCH@
+Libs: -L${libdir} -lsbl
+Cflags: -I${includedir}
