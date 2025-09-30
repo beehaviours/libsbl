@@ -29,13 +29,13 @@ int sbl_find_video(char *filename, int module, int cam, int year,
 	}
 
 	if (n == 0) {
-		return 0;
+		return -1;
 	}
 
 	if (n > 1) {
 		fprintf(stderr,
 			"[find_sblv_file] File for this timestamp is not unique.\n");
-		return 0;
+		return -2;
 	}
 
 	filename = malloc(strlen(namelist[0]->d_name + 1));
@@ -45,7 +45,7 @@ int sbl_find_video(char *filename, int module, int cam, int year,
 	free(namelist[0]);
 	free(namelist);
 
-	return 1;
+	return 0;
 }
 
 void sbl_get_lib_version( int* major, int* minor, int* patch) {
