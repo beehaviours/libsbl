@@ -10,7 +10,7 @@
 
 void sbl_get_lib_version( int* major, int* minor, int* patch);
 
-int sbl_find_video(char *filename, int module, int cam, int year, int month, int day, int hour, int minute) ;
+int sbl_find_video(char *filename, size_t size, int module, int cam, int year, int month, int day, int hour, int minute) ;
 
 #endif
 

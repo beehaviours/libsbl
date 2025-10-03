@@ -13,15 +13,18 @@ int filter(const struct dirent *dir) {
 }
 
 
-int sbl_find_video(char *filename, int module, int cam, int year,
+int sbl_find_video(char *filename, size_t filename_size, int module, int cam, int year,
 		   int month, int day, int hour, int minute) {
 	struct dirent **namelist;
+	char search_path[1024];
 	int n;
+
+	snprintf(search_path,1024,"%s/%s", DEFAULT_DATA_PATH, SBL_SBLV_PATH );
 
 	snprintf(filter_str, 25, "M%02dC%02d_%4d%02d%02d_%02d%02d",
 		 module, cam, year, month, day, hour, minute);
 
-	n = scandir(".", &namelist, filter, alphasort);
+	n = scandir(search_path, &namelist, filter, alphasort);
 
 	if (n == -1) {
 		fprintf(stderr, "[find_sblv_file] Scandir Error\n");
@@ -38,9 +41,7 @@ int sbl_find_video(char *filename, int module, int cam, int year,
 		return -2;
 	}
 
-	filename = malloc(strlen(namelist[0]->d_name + 1));
-
-	sprintf(filename, "%s", namelist[0]->d_name);
+	snprintf(filename, filename_size, "%s", namelist[0]->d_name);
 
 	free(namelist[0]);
 	free(namelist);
