@@ -19,7 +19,7 @@ int sbl_find_video(char *filename, size_t filename_size, int module, int cam, in
 	char search_path[1024];
 	int n;
 
-	snprintf(search_path,1024,"%s/%s", DEFAULT_DATA_PATH, SBL_SBLV_PATH );
+	snprintf(search_path,1024,"%s%s", DEFAULT_DATA_PATH, SBL_SBLV_PATH );
 
 	snprintf(filter_str, 25, "M%02dC%02d_%4d%02d%02d_%02d%02d",
 		 module, cam, year, month, day, hour, minute);
@@ -41,7 +41,7 @@ int sbl_find_video(char *filename, size_t filename_size, int module, int cam, in
 		return -2;
 	}
 
-	snprintf(filename, filename_size, "%s", namelist[0]->d_name);
+	snprintf(filename, filename_size, "%s/%s", search_path, namelist[0]->d_name);
 
 	free(namelist[0]);
 	free(namelist);
